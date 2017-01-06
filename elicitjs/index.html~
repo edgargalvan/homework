@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Utility Elicitor</title>
+    <!--<script src="bower_components/ChartNew.js/ChartNew.js"></script>-->
+    <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script> <!--dependency for plotly-->
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="bower_components/numericjs/src/numeric.js"></script>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script src="mindmup-editabletable.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/flattable.css">
+    <!--<link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">-->
+    <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">-->
+
+    <script src="updateChartValues.js"></script>
+    <script src="createLineChart.js"></script>
+    <script src="selectableTable.js"></script>
+    <script src="tableMaking.js"></script>
+    <script src="newPoint.js"></script>
+    <script src="fitting.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".buttonNext").click(function(){
+                $(".first").hide();
+                $(".next").show();
+            });
+
+            $(".buttonFirst").click(function(){
+                $(".first").show();
+                $(".next").hide();
+                $("#selectableTable").remove();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#mainTable').editableTableWidget();
+        });
+    </script>
+</head>
+
+<body>
+
+<!--<script src="bower_components/chartist/dist/chartist.min.js"></script>-->
+
+<div style="width:50%;">
+    <!--<div class="ct-chart ct-golden-section" id="canvas"></div>-->
+    <div id="utilityChart" ></div>
+</div>
+
+
+
+<script>
+var graphDiv = document.getElementById('utilityChart');
+var xLabel = "Dollars";
+var yLabel = "Utility";
+
+var data = [{
+    x: [0, 10],
+    y: [0, 1],
+    mode: 'lines+markers',
+    line: {shape: "spline"},
+    type: 'scatter'
+}];
+
+createLineChart(graphDiv, data,xLabel,yLabel);
+makeMainTable(data, xLabel,yLabel);
+</script>
+
+<button id="buttonBack" class="big buttonFirst next" >Restart </button>
+<button id="buttonNext" class="big buttonNext first" onclick="makeElicitationTable();">Start Lottery</button>
+<button id="buttonNext2" class="big buttonNext next" onclick="updateElicitationTable();">Next Lottery</button>
+
+<script>
+    $(".next").hide();
+</script>
+
+</body>
+</html>
