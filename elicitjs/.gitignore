@@ -1,2 +1,10 @@
-archive
-node_modules
+## OS X FILES
+.DS_Store
+Desktop.ini/*
+
+## EMACS
+*.el
+#*
+.#*
+auto/*
+*~
