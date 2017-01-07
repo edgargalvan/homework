@@ -1,0 +1,13 @@
+## OS X FILES
+.DS_Store
+Desktop.ini/*
+
+## EMACS
+*.el
+\#*
+\.#*
+auto/*
+*~
+
+# Windows default autosave extension
+*.asv
