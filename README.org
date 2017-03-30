@@ -1,0 +1,4 @@
+
+* Homework assignments
+A repo of homework assignments I have created. For now, it's just "elicitjs"
+
